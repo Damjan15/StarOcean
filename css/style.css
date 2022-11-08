@@ -51,74 +51,187 @@
 
 /*=============== BASE ===============*/
 * {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 body {
-    font-family: var(--body-font);
-    font-size: var(--normal-font-size);
-    background-color: var(--body-color);
-    color: var(--text-color);
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  background-color: var(--body-color);
+  color: var(--text-color);
 }
 
-h1, h2, h3 {
-    color: var(--title-color);
-    font-weight: var(--font-medium);
+h1,
+h2,
+h3 {
+  color: var(--title-color);
+  font-weight: var(--font-medium);
 }
 
 ul {
-    list-style: none;
+  list-style: none;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 img {
-    max-width: 100%;
-    height: auto;
+  max-width: 100%;
+  height: auto;
 }
 
 /*=============== REUSABLE CSS CLASSES ===============*/
 .container {
-    max-width: 1024px;
-    margin-inline: 1.5rem;
+  max-width: 1024px;
+  margin-inline: 1.5rem;
 }
 
 .grid {
-    display: grid;
-    gap: 1.5rem;
+  display: grid;
+  gap: 1.5rem;
 }
 
 .section {
-    padding-block: 5rem 1rem;
+  padding-block: 5rem 1rem;
 }
 
 .section__title {
-    font-size: var(--h1-font-size);
-    font-family: var(--title-font);
-    margin-bottom: 1.5rem;
+  font-size: var(--h1-font-size);
+  font-family: var(--title-font);
+  margin-bottom: 1.5rem;
 }
 
 .section__subtitle {
-    display: block;
-    font-size: var(--h2-font-size);
-    font-family: var(--subtitle-font);
-    color: var(--first-color);
-    margin-bottom: .5rem;
+  display: block;
+  font-size: var(--h2-font-size);
+  font-family: var(--subtitle-font);
+  color: var(--first-color);
+  margin-bottom: 0.5rem;
 }
 
 .section__title,
 .section__subtitle {
-    text-align: center;
+  text-align: center;
 }
 
 .main {
-    overflow: hidden; /* For animation ScrollReveal */ 
+  overflow: hidden; /* For animation ScrollReveal */
+}
+
+/*=============== HEADER & NAV ===============*/
+.header {
+  position: fixed;
+  width: 100%;
+  background-color: var(--body-color);
+  top: 0;
+  left: 0;
+  z-index: var(--z-fixed);
+  transition: box-shadow 0.3s, background 0.4s;
+}
+
+.nav {
+  position: relative;
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav__logo,
+.nav__toggle,
+.nav__close {
+  display: flex;
+  color: var(--title-color);
+}
+
+.nav__logo {
+  align-items: center;
+  column-gap: 0.5rem;
+  font-family: var(--title-color);
+  font-size: var(--h3-font-size);
+  font-weight: var(--font-semi-bold);
+  transition: color 0.3s;
+}
+
+.nav__logo img {
+  width: 25px;
+}
+
+.nav__logo:hover {
+  color: var(--first-color);
+}
+
+.nav__toggle {
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .nav__menu {
+    position: fixed;
+    top: -100%;
+    left: 0;
+    background-color: var(--body-color);
+    width: 100%;
+    box-shadow: 0 8px 20px hsla(19, 64%, 24%, 0.1);
+    padding: 3.5rem;
+    transition: top 0.4s;
+  }
+}
+
+.nav__list {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  row-gap: 2rem;
+}
+
+.nav__link {
+  color: var(--title-color);
+  font-weight: var(--font-medium);
+  transition: color 0.4s;
+}
+
+.nav__link:hover {
+  color: var(--first-color);
+}
+
+.nav__close {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.nav__img-1,
+.nav__img-2 {
+  position: absolute;
+  opacity: 0.2;
+}
+
+.nav__img-1 {
+  width: 100px;
+  top: 0.75rem;
+  left: -2rem;
+  transform: rotate(165deg);
+}
+
+.nav__img-2 {
+  width: 50px;
+  right: -1rem;
+  bottom: 0;
+  transform: rotate(-30deg);
+}
+
+/* Show menu */
+.show-menu {
+    top: 0;
 }
