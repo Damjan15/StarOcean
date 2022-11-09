@@ -2,53 +2,43 @@
 const navMenu = document.getElementById("nav-menu");
 const navToggle = document.getElementById("nav-toggle");
 const navClose = document.getElementById("nav-close");
-
-// Validate if navToggle exists, if it does show menu
-if (navToggle) {
-    navToggle.addEventListener("click", () => {
-        navMenu.classList.add("show-menu");
-    })
-}
-
-// Validate if navClose exists, if it does hide the menu
-if (navClose) {
-    navClose.addEventListener("click", () => {
-        navMenu.classList.remove("show-menu");
-    })
-}
-
-// Remove the menu on link click
+const header = document.getElementById("header");
+const scrollUpEl = document.getElementById("scroll-up");
 const navLink = document.querySelectorAll(".nav__link");
+const sections = document.querySelectorAll("section[id]");
 
-const removeMenu = () => {
+/*=============== FUNCTIONS ===============*/
+
+// Show menu
+function showMenu() {
+    if(navToggle) {
+        navMenu.classList.add("show-menu");
+    }
+}
+
+// Hide menu
+function hideMenu() {
+    if (navClose) {
+        navMenu.classList.remove("show-menu");
+    }
+}
+
+// Remove menu on link click
+function removeMenu() {
     navMenu.classList.remove("show-menu");
 }
 
-navLink.forEach((link) => link.addEventListener("click", removeMenu));
-
-/*=============== CHANGE BACKGROUND HEADER ===============*/
+// Change header background
 function scrollHeader() {
-    const header = document.getElementById("header");
-
-    // When the scroll is greater than 50 viewport height, add the bg header class, else remove the class
     this.scrollY >= 50 ? header.classList.add('bg-header') : header.classList.remove('bg-header')
 }
 
-window.addEventListener("scroll", scrollHeader);
-
-/*=============== SHOW SCROLL UP ===============*/
+// Show scroll up button
 function scrollUp() {
-    const scrollUpEl = document.getElementById("scroll-up");
-
-    // When the scroll is higher than 350 viewport height, add the show-scroll class else remove it
     this.scrollY >= 350 ? scrollUpEl.classList.add("show-scroll") : scrollUpEl.classList.remove("show-scroll");
 }
 
-window.addEventListener("scroll", scrollUp);
-
-/*=============== SCROLL SECTION ACTIVE LINK ===============*/
-const sections = document.querySelectorAll("section[id]");
-
+// Set active link when scrolled to correct section
 function scrollActive() {
     const scrollY = window.scrollY;
 
@@ -66,4 +56,13 @@ function scrollActive() {
     })
 }
 
-window.addEventListener("scroll", scrollActive);
+
+/*=============== EVENT LISTENERS ===============*/
+navToggle.addEventListener("click", showMenu);
+navClose.addEventListener("click", hideMenu);
+navLink.forEach((link) => link.addEventListener("click", removeMenu));
+window.addEventListener("scroll", () => {
+    scrollHeader();
+    scrollUp();
+    scrollActive();
+})
