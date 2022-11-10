@@ -1,7 +1,7 @@
 # Star Ocean
 Star Ocean is a landing page for chinese restaurant. The landing page contains the pricing of their products, and an email form to receive new updates for their products.
 
-**Link to project**: [Hosted on Netlify]("https://jolly-alfajores-c70b0d.netlify.app/")
+**Link to project**: [https://jolly-alfajores-c70b0d.netlify.app/]("https://jolly-alfajores-c70b0d.netlify.app/")
 
 ![project preview](preview.png)
 
